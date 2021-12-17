@@ -53,7 +53,6 @@ def info():
     frame_down.after(1000, info)
 
 
-# configurando o frame cima ---------------
 image = Image.open('images/coin.png')
 image = image.resize((30,30), Image.ANTIALIAS)
 image = ImageTk.PhotoImage(image)
