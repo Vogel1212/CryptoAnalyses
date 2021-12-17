@@ -1,6 +1,6 @@
 # CryptoAnalyses  
 
-<img src="CryptoAnalyseBeta.PNG" alt="CryptoAnalyseBeta">  
+<img src="images/CryptoAnalyseBeta.PNG" alt="CryptoAnalyseBeta">  
 
 > Track the price of Bitcoin and Ethereum in real time directly on your desktop  
 
