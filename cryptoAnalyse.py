@@ -64,8 +64,6 @@ c_icon.place(x=10, y=10)
 c_name = Label(frame_up, text='Crypto Current Price', bg=fontWhite,fg=gray, relief=FLAT , anchor='center', font=('Arial 20'))
 c_name.place(x=50, y=5)
 
-# configurando o frame baixo ---------------
-
 c_usd = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
 c_usd.place(x=10, y=130)
 
