@@ -1,54 +1,81 @@
 from tkinter import *
 from tkinter import ttk
-from PIL import ImageTk, Image
+from PIL import ImageTk , Image 
 
-import json
 import requests
+import json
 
-#colors
-black = "#444466"
-white = "#feffff"
-blue = "#6f9fbd"
-screen = "#0e0f13"
-##
+fontWhite = "#feffff"
+gray = "#b45f06"
+screen = "#070709"
 
-window = Tk()
+window  = Tk()
 window.title('')
-window.geometry('350x350')
+window.geometry('320x350')
 window.configure(background=screen)
 
+
+#frames
 ttk.Separator(window, orient=HORIZONTAL).grid(row=0, columnspan=1, ipadx=157)
 
-frame_up = Frame(window, width=320, height=50, bg=black, pady=0, padx=0, relief='flat')
+frame_up = Frame(window, width=320, height=50, bg=fontWhite, pady=0, padx=0, relief='flat')
 frame_up.grid(row=1, column=0)
 
 frame_down = Frame(window, width=320, height=300, bg=screen, pady=0, padx=0, relief='flat')
 frame_down.grid(row=2, column=0, sticky=NW)
 
-def cryp():
-    api_link ='https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,AOA,BRL'
 
-    respon = requests.get(api_link)
-    
+#fuction data api
+
+def info():
+    apiCryp ='https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,AOA,BRL'
+
+    respon = requests.get(apiCryp)
+
     data = respon.json()
-    
-    # USD $ value
-    value_usd = float(data['USD'])
-    value_format_usd = "${:,.3f}".format(value_usd)
-    c_usd['text'] = 'Dollars : $ '+value_format_usd
-    
-    # EUR $ value
-    value_eur = float(data['EUR'])
-    value_format_eur = "${:,.3f}".format(value_eur)
-    c_eur['text'] = 'Euros : $ '+value_format_eur
-    
-    # BRL $ value
-    value_brl = float(data['BRL'])
-    value_format_brl = "${:,.3f}".format(value_brl)
-    c_brl['text'] = 'Reais : $ '+value_format_brl
-    
-    frame_down.after(1000, cryp)
 
-cryp()
+    # value in USD
+    vlue_usd = float(data['USD'])
+    vlueFormatusd = "{:,.3f}".format(vlue_usd)
+    c_usd['text'] = 'Dollars : USD '+vlueFormatusd
+    
+    # value in EURO
+    vlue_euro = float(data['EUR'])
+    vlueFormateur = "{:,.3f}".format(vlue_euro)
+    c_euro['text'] = 'Euro : € '+vlueFormateur
+    
+    # value in BRL
+    vlue_reais = float(data['BRL'])
+    vlueFormatbrl = "{:,.3f}".format(vlue_reais)
+    c_reais['text'] = 'Reais : R$ '+vlueFormatbrl
+    
+    
+    frame_down.after(1000, info)
+
+
+# configurando o frame cima ---------------
+image = Image.open('images/coin.png')
+image = image.resize((30,30), Image.ANTIALIAS)
+image = ImageTk.PhotoImage(image)
+
+c_icon = Label(frame_up, image=image, compound=LEFT, bg=fontWhite,relief=FLAT )
+c_icon.place(x=10, y=10)
+
+c_name = Label(frame_up, text='Crypto Current Price', bg=fontWhite,fg=gray, relief=FLAT , anchor='center', font=('Arial 20'))
+c_name.place(x=50, y=5)
+
+# configurando o frame baixo ---------------
+
+c_usd = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_usd.place(x=10, y=130)
+
+c_euro = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_euro.place(x=10, y=160)
+
+c_reais = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_reais.place(x=10, y=190)
+
+
+info()
 
 window.mainloop()
