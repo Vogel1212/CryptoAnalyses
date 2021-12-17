@@ -25,7 +25,7 @@ Before starting, make sure you meet the following requirements:
 
 ## 🚀 Install <CryptoAnalyses>
 
-To install <covid_19_app>, follow these steps:  
+To install <CryptoAnalyses>, follow these steps:  
   
 Linux e macOS:
 ```
@@ -37,9 +37,9 @@ Windows:
 <install_command>
 ```
 
-## ☕ Using <covid_19_app>
+## ☕ Using <CryptoAnalyses>
 
-To use <covid_19_app>, follow these steps:
+To use <CryptoAnalyses>, follow these steps:
 ```
 <exemplo_de_uso>
 ```
