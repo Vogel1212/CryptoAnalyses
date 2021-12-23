@@ -26,14 +26,14 @@ frame_down.grid(row=2, column=0, sticky=NW)
 
 
 #fuction data api
-
-def info():
+#Info API Bitcoin
+def infoBitcoin():
     apiCryp ='https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR,AOA,BRL'
 
     respon = requests.get(apiCryp)
 
     data = respon.json()
-
+    
     # value in USD
     vlue_usd = float(data['USD'])
     vlueFormatusd = "{:,.3f}".format(vlue_usd)
@@ -50,7 +50,7 @@ def info():
     c_reais['text'] = 'Reais : R$ '+vlueFormatbrl
     
     
-    frame_down.after(1000, info)
+    frame_down.after(1000, infoBitcoin)
 
 
 image = Image.open('images/coin.png')
@@ -73,6 +73,45 @@ c_reais = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , ancho
 c_reais.place(x=10, y=190)
 
 
-info()
+infoBitcoin()
+
+#Info API Bitcoin
+def infoEthereum(args):
+    
+    apiCrypEt =''
+
+    respon = requests.get(apiCrypEt)
+
+    data = respon.json()
+    
+    # value in USD
+    vlue_usdEt = float(data['USD'])
+    vlueFormatusdEt = "{:,.3f}".format(vlue_usdEt)
+    c_usdEt['text'] = 'Dollars : USD '+vlueFormatusdEt
+    
+    # value in EURO
+    vlue_euroEt = float(data['EUR'])
+    vlueFormateurEt = "{:,.3f}".format(vlue_euroEt)
+    c_euroEt['text'] = 'Euro : € '+vlueFormateurEt
+    
+    # value in BRL
+    vlue_reaisEt = float(data['BRL'])
+    vlueFormatbrlEt = "{:,.3f}".format(vlue_reaisEt)
+    c_reaisEt['text'] = 'Reais : R$ '+vlueFormatbrlEt
+    
+    
+    frame_down.after(1000, infoEthereum)
+
+c_usdEt = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_usdEt.place(x=10, y=130)
+
+c_euroEt = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_euroEt.place(x=10, y=160)
+
+c_reaisEt = Label(frame_down, text='', bg=screen,fg=fontWhite, relief=FLAT , anchor='center', font=('Arial 12'))
+c_reaisEt.place(x=10, y=190)
+    
+infoEthereum()
+    
 
 window.mainloop()
